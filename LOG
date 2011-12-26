@@ -1,0 +1,46 @@
+12/07/2010 1836
+JUDGE started. Will be written in bash.
+Will store functions in separate files and
+pool them together later.
+
+Plan:
+/ : tester.sh, <functionname.sh> (each function), LOG, README, 
+	[ <problemname>.<extn> (the file to be tested), <problemname> (compiled executable), 
+	<problemname>.in (input), <problemname>.out ] (temporary files for testing)
+/problems/ : <problemname>/ (directory for each problem)
+/problems/<problemname>/ : <problemname>.data (holds timelimit, testcase weightings, one on each line),
+						   <problemname>.<k>.in (input file for the kth testcase),
+						   <problemname>.<k>.out (holds the correct output for the kth testcase)
+/submissions/ : <username>/ (directory for each user)
+/submissions/<username>/ : <problemname>.<k>.<extn>, <problemname>.scores (holds the time and date and score of each submission)
+
+UPDATE 1852
+Found old JUDGE. Copied into directory.
+Must improve messy code, add more comments
+and split into different modules.
+
+16/07/2010 17:26
+Removed memory limits from JUDGE. (work this out later). Variables still exist. 
+Added $(pwd) to the stripspace call and moved stripSpace.py to lib/. Moved add/ to problems/.
+add (addition) problem judging works fine. used rm to remove stale files.
+
+Format for .scores file, one line per submission:
+Attempt #k .extn score% date
+
+17/07/2010 15:08
+Setup a django interface in /interface running on junkbot.ath.cx:8000.
+First used GET method for form then got the POST method to work (no query string). Must add
+{% csrf_token %} just after <form ... method="POST"> to the template and add
+from django.core.context_processors import csrf
+to views.py as well as
+c = {}
+c.update(csrf(request))
+to the view that displays the submission gateway.
+
+TODO:
+best score and time
+handle memory limits (not just timelimits)
+more precision timing
+write a README, (discontinued)
+write a Django interface (users): in progress
+write a Handler script

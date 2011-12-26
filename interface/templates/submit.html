@@ -1,0 +1,41 @@
+<!-- submission gateway for judging -->
+
+<html>
+<head>
+    <title>Submit Solution</title>
+</head>
+<body>
+	<form action="/judge/" method="post">
+	{% csrf_token %}
+	<table border="0">
+		<tr>
+			<td>
+				Username:&nbsp;
+			</td>
+			<td>
+				<input type="textbox" name="username">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Problem:&nbsp;
+			</td>
+			<td>
+				<input type="textbox" name="problem">
+			</td>
+		</tr>
+	</table>
+	<br>
+	Select a language:&nbsp;
+	<select name="lang" value="{{ language }}">
+		<option>C++</option>
+		<option>C</option>
+		<option>Pascal</option>
+	</select>
+	<br>
+	<textarea cols="100" rows="15" name="source" value="{{ source }}">Paste your source code here...</textarea>
+	<br>        
+	<input type="submit" value="Submit">
+    </form>
+</body>
+</html>

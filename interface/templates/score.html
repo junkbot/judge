@@ -1,0 +1,21 @@
+<!-- page for displaying results of judge -->
+
+<html>
+
+<head>
+	<title>Results for {{ username }}: {{ problem }}</title>
+</head>
+
+<body>
+<h1 style="border-bottom:solid #008000 1px">Problem: {{ problem }}</h1>
+{% if judge_output %}
+<pre>
+{{ judge_output }}
+</pre>
+<br>
+{% endif %}
+<a href="/submit/">Back to Submission Gateway</a>
+
+</body>
+
+</html>
